@@ -262,6 +262,24 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
   .place{grid-template-columns:30px 1fr;gap:12px}
   .plate .glow{filter:blur(30px) saturate(1.5)}
 }
+
+/* ---- ambient audio ---- */
+#amb{position:fixed;right:clamp(14px,3vw,28px);bottom:calc(clamp(14px,3vw,28px) + env(safe-area-inset-bottom,0px));z-index:60;
+  display:flex;align-items:center;gap:.6rem;background:rgba(4,16,15,.72);backdrop-filter:blur(10px);
+  border:1px solid rgba(168,213,205,.22);border-radius:999px;padding:.5rem .9rem .5rem .55rem;
+  color:var(--aqua);font:500 .74rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;transition:border-color .35s,background .35s,opacity .35s;opacity:.62}
+#amb:hover,#amb:focus-visible{opacity:1;border-color:rgba(168,213,205,.5);background:rgba(4,16,15,.9)}
+#amb:focus-visible{outline:2px solid var(--aqua);outline-offset:3px}
+#amb .ic{width:26px;height:26px;flex:0 0 26px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(168,213,205,.35);position:relative}
+#amb .ic::before{content:"";width:0;height:0;border-left:7px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+#amb.on .ic::before{border:0;width:7px;height:9px;margin:0;border-left:2.5px solid currentColor;border-right:2.5px solid currentColor}
+#amb.on .ic{animation:ambpulse 3.4s ease-in-out infinite}
+@keyframes ambpulse{0%,100%{box-shadow:0 0 0 0 rgba(168,213,205,.28)}50%{box-shadow:0 0 0 7px rgba(168,213,205,0)}}
+#amb .lbl{white-space:nowrap}
+@media (max-width:520px){#amb .lbl{display:none}#amb{padding:.5rem}}
+@media (prefers-reduced-motion:reduce){#amb.on .ic{animation:none}}
 </style>
 </head>
 <body>
@@ -508,6 +526,23 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
 
     <article class="entry">
       <div class="stage">
+        <button class="plate landscape reveal" type="button" aria-label="Expand wide photo of the whole reef tank showing fish at every depth">
+          <img class="glow" src="aq-reef2.jpg" alt="" aria-hidden="true">
+          <img class="photo" src="aq-reef2.jpg" alt="A wide view of a large reef tank: big fish cruising the open middle water, dense schools packed low against the rocks, and a shark passing along the right">
+        </button>
+      </div>
+      <div class="plate-body">
+        <span class="tag">Reef tank</span>
+        <h3>The whole tank at once</h3>
+        <p class="sci">Carangidae · Carcharhinidae · Haemulidae</p>
+        <div class="field"><b>What you're seeing</b><p>Step back far enough and the tank stops being a collection of animals and starts being a map. Big fish patrol the open middle water. A shark works the right-hand wall. And everything small is packed down low against the rock, barely leaving it.</p></div>
+        <div class="field hook"><b>Worth knowing</b><p>That layering is not decoration, it's arithmetic. On a reef, open water is where you get eaten and structure is where you don't, so a small fish only ever strays as far from cover as it can sprint back. Ecologists use that distance as a live readout of how dangerous a reef is — where predators are thick, the schools press flat against the rock. You can read the risk in the room without ever seeing the hunt.</p></div>
+        <p class="uncertain">→ Wide shot through curved glass. The jacks, grunts and the shark are all genus-level guesses at best.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of spotted jellyfish">
           <img class="glow" src="aq-jelly.jpg" alt="" aria-hidden="true">
           <img class="photo" src="aq-jelly.jpg" alt="Several white-spotted jellyfish glowing blue against a dark tank">
@@ -537,6 +572,23 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
         <div class="field"><b>What you're seeing</b><p>The colour is not a lighting gel. Under ultraviolet light the animal's own tissue fluoresces — proteins in the anemone absorb UV and re-emit it as visible blue and green.</p></div>
         <div class="field hook"><b>Worth knowing</b><p>Those fluorescent proteins turned out to be one of the most useful discoveries in modern biology. Extracted, cloned, and spliced into other organisms, they let scientists literally watch genes switch on — a cell that lights up is a cell doing the thing you're testing for. The 2008 Nobel Prize in Chemistry went to that work. It started in a jellyfish.</p></div>
         <p class="uncertain">→ Species not determined. Anemone identification usually needs the column and foot, which are hidden here.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="stage">
+        <button class="plate portrait reveal" type="button" aria-label="Expand photo of a rock wall covered in anemones and sea stars under violet light">
+          <img class="glow" src="aq-tubeanemone.jpg" alt="" aria-hidden="true">
+          <img class="photo" src="aq-tubeanemone.jpg" alt="A rock face crowded with pink and white anemones and a tall orange column anemone, with sea stars on the upper right, all under deep violet light">
+        </button>
+      </div>
+      <div class="plate-body">
+        <span class="tag">Cold water exhibit</span>
+        <h3>The crowded rock</h3>
+        <p class="sci">Actiniaria · Asteroidea</p>
+        <div class="field"><b>What you're seeing</b><p>Not one animal but a whole wall of them — a tall smooth orange column on the left, a cluster of frilled pink anemones across the middle, sea stars folded over the rock at the top right. Every square inch of that surface is spoken for.</p></div>
+        <div class="field hook"><b>Worth knowing</b><p>Anemones that look like a peaceful carpet are usually at war. Many species reproduce by simply splitting in half, so a patch of them is often a single animal copied hundreds of times. Where two different clones meet, they fight — with tentacles built for nothing but combat — and the fighting leaves a narrow bare strip of rock between them that neither side can hold. Those empty seams are borders.</p></div>
+        <p class="uncertain">→ Species not called. The violet lamp shifts every colour in the frame, so nothing here can be identified by colour — only by shape.</p>
       </div>
     </article>
 
@@ -591,6 +643,82 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     </article>
   </section>
 
+
+  <!-- ============ ECLIPSE ============ -->
+  <section id="eclipse">
+    <div class="wide">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Tampa · 27 August 2026</span>
+        <h2>The night the moon went out</h2>
+      </div>
+      <blockquote class="thesis-quote reveal" style="max-width:34rem">
+        Ninety-three percent of it slid into the Earth's shadow just after midnight. Nobody else on the street came outside. It is a strange thing to stand alone in a driveway watching a planet's shadow cross a rock a quarter of a million miles away.
+      </blockquote>
+    </div>
+
+    <article class="entry" style="margin-top:clamp(40px,8vh,90px)">
+      <div class="stage">
+        <button class="plate portrait reveal" type="button" aria-label="Expand photo of the partially eclipsed moon">
+          <img class="glow" src="ec-partial.jpg" alt="" aria-hidden="true">
+          <img class="photo" src="ec-partial.jpg" alt="The moon with craters clearly visible, its lower left edge softened where Earth's shadow has begun to cross it">
+        </button>
+      </div>
+      <div class="plate-body">
+        <span class="tag">22:21 · first contact</span>
+        <h3>The edge of the shadow</h3>
+        <p class="sci">Umbral phase beginning</p>
+        <div class="field"><b>What you're seeing</b><p>The soft curve along the lower left is not the terminator between lunar day and night. It is the edge of the Earth's own shadow, falling across the surface. Craters stay sharp right up to the boundary, and then simply stop.</p></div>
+        <div class="field hook"><b>Worth knowing</b><p>That curve is one of the oldest pieces of evidence we have that the Earth is round. Aristotle pointed at it in the fourth century BC: the shadow we cast on the moon is always circular, and only a sphere casts a circular shadow from every angle.</p></div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="stage">
+        <button class="plate portrait reveal" type="button" aria-label="Expand photo of the moon further into eclipse">
+          <img class="glow" src="ec-shadow.jpg" alt="" aria-hidden="true">
+          <img class="photo" src="ec-shadow.jpg" alt="The moon smaller in the frame, more of its surface now dark, a bright crescent remaining at the top">
+        </button>
+      </div>
+      <div class="plate-body">
+        <span class="tag">22:24 · deepening</span>
+        <h3>Three minutes later</h3>
+        <div class="field"><b>What's happening</b><p>The shadow moves faster than it looks. Three minutes between this frame and the one above, and the lit portion has visibly shrunk. You cannot see it move while you watch. You can only see that it has moved.</p></div>
+        <div class="field hook"><b>Worth knowing</b><p>The whole event ran more than five hours, but the part where the dark shadow actually crosses the disc takes about three hours and eighteen minutes — the moon travelling through a cone of darkness roughly 1.4 million kilometres long, trailing behind the Earth.</p></div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="stage">
+        <button class="plate portrait reveal" type="button" aria-label="Expand photo of the moon near maximum eclipse">
+          <img class="glow" src="ec-deep.jpg" alt="" aria-hidden="true">
+          <img class="photo" src="ec-deep.jpg" alt="A thin brilliant crescent at the top of the moon, the rest of the disc a faint glowing dome below it">
+        </button>
+      </div>
+      <div class="plate-body">
+        <span class="tag">Near maximum</span>
+        <h3>Ninety-three percent</h3>
+        <div class="field"><b>What you're seeing</b><p>A sliver of direct sunlight along the top rim, and beneath it the whole shadowed disc, still faintly visible. This is the moment the moon stops looking like a light and starts looking like an object — a sphere hanging in front of you rather than a shape drawn on the sky.</p></div>
+        <div class="field hook"><b>Worth knowing</b><p>The shadowed part is not truly dark, and the reason is beautiful. Sunlight bends through the Earth's atmosphere and lands there — every sunrise and every sunset happening on the planet at that moment, refracted onto the moon at once. That is what makes an eclipsed moon glow red.</p></div>
+        <p class="uncertain">→ Shot handheld at 300mm. The colour is not recoverable at this exposure, so these are presented in monochrome rather than invented.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="stage">
+        <button class="plate portrait reveal" type="button" aria-label="Expand a double-exposed photo of the eclipsed moon">
+          <img class="glow" src="ec-double.jpg" alt="" aria-hidden="true">
+          <img class="photo" src="ec-double.jpg" alt="Two overlapping bright crescents against black, the result of camera movement during a long exposure">
+        </button>
+      </div>
+      <div class="plate-body">
+        <span class="tag">Mistake</span>
+        <h3>Two moons</h3>
+        <div class="field"><b>What happened</b><p>A fifteenth-of-a-second exposure at 300 millimetres, handheld, at one in the morning. The camera moved. There is only one moon in this photograph.</p></div>
+        <div class="field hook"><b>Kept anyway</b><p>It is a technical failure and it is the strangest image of the night, so it stays. A tripod would have prevented it. Next time there will be a tripod, and this will not happen again — which is a reason to keep it now.</p></div>
+      </div>
+    </article>
+  </section>
+
   <footer>
     <div class="wrap">
       <p>Photographs and observations from around Tampa and Pasco County. Locations on private property are shown approximately on purpose.</p>
@@ -600,6 +728,13 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
 
 </main>
 </div><!-- /page -->
+
+
+<button id="amb" type="button" aria-pressed="false" aria-label="Play ambient music">
+  <span class="ic" aria-hidden="true"></span>
+  <span class="lbl">Sound</span>
+</button>
+<audio id="amb-a" loop preload="none" src="infinite-love.mp3"></audio>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button id="lb-close" type="button">close ✕</button>
@@ -772,6 +907,41 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     if(!lb.classList.contains('on')) return;
     if(e.key === 'Escape') close();
     if(e.key === 'Tab'){ e.preventDefault(); lbBtn.focus(); }
+  });
+})();
+
+/* ---- ambient audio ---- */
+(function(){
+  var b=document.getElementById('amb'), a=document.getElementById('amb-a');
+  if(!b||!a) return;
+  var TARGET=0.42, fade;
+  a.volume=0;
+  function ramp(to,done){
+    clearInterval(fade);
+    fade=setInterval(function(){
+      var d=to-a.volume;
+      if(Math.abs(d)<0.02){a.volume=to;clearInterval(fade);if(done)done();return;}
+      a.volume=Math.min(1,Math.max(0,a.volume+d*0.12));
+    },40);
+  }
+  b.addEventListener('click',function(){
+    if(a.paused){
+      a.play().then(function(){
+        b.classList.add('on'); b.setAttribute('aria-pressed','true');
+        b.setAttribute('aria-label','Pause ambient music');
+        b.querySelector('.lbl').textContent='Playing';
+        ramp(TARGET);
+      }).catch(function(){});
+    } else {
+      ramp(0,function(){a.pause();});
+      b.classList.remove('on'); b.setAttribute('aria-pressed','false');
+      b.setAttribute('aria-label','Play ambient music');
+      b.querySelector('.lbl').textContent='Sound';
+    }
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden && !a.paused) ramp(0,function(){a.pause();b.classList.remove('on');
+      b.setAttribute('aria-pressed','false');b.querySelector('.lbl').textContent='Sound';});
   });
 })();
 </script>
