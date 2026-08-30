@@ -6,6 +6,21 @@
 <meta name="theme-color" content="#07211f">
 <title>Field Notes — Nicolas Graham</title>
 <meta name="description" content="A field guide to the wildlife of ordinary places. Photography and field notes from Tampa and Pasco County, Florida.">
+
+<link rel="canonical" href="https://nicofoxheart.github.io/Nicolas-Graham-Nature/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Field Notes">
+<meta property="og:title" content="Field Notes — Nicolas Graham">
+<meta property="og:description" content="A field guide to the wildlife of ordinary places. Photography and field notes from Tampa and Pasco County, Florida.">
+<meta property="og:image" content="https://nicofoxheart.github.io/Nicolas-Graham-Nature/hero-01.jpg">
+<meta property="og:image:alt" content="Sunset over the water at the Tampa Riverwalk">
+<meta property="og:url" content="https://nicofoxheart.github.io/Nicolas-Graham-Nature/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Field Notes — Nicolas Graham">
+<meta name="twitter:description" content="A field guide to the wildlife of ordinary places. Photography from Tampa, Florida.">
+<meta name="twitter:image" content="https://nicofoxheart.github.io/Nicolas-Graham-Nature/hero-01.jpg">
+<meta name="author" content="Nicolas Graham">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307211f'/%3E%3Cpath d='M21 21.8a8.2 8.2 0 1 1-5.4-14.9 9.6 9.6 0 0 0 5.4 14.9z' fill='%23a8d5cd'/%3E%3Ccircle cx='23.5' cy='9.5' r='1.4' fill='%234a8f87'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -280,9 +295,58 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
 #amb .lbl{white-space:nowrap}
 @media (max-width:520px){#amb .lbl{display:none}#amb{padding:.5rem}}
 @media (prefers-reduced-motion:reduce){#amb.on .ic{animation:none}}
+
+/* ---- site nav ---- */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id]{scroll-margin-top:72px}
+#nav{position:fixed;top:0;left:0;right:0;z-index:55;
+  display:flex;align-items:center;gap:clamp(.5rem,2vw,1.6rem);
+  padding:.62rem clamp(12px,4vw,30px);
+  padding-top:calc(.62rem + env(safe-area-inset-top,0px));
+  background:rgba(4,16,15,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(168,213,205,.13);
+  transform:translateY(-105%);opacity:0;
+  transition:transform .45s cubic-bezier(.4,0,.2,1),opacity .35s ease}
+#nav.show{transform:translateY(0);opacity:1}
+#nav .brand{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:.95rem;
+  color:var(--foam);letter-spacing:.01em;text-decoration:none;white-space:nowrap;flex:0 0 auto;
+  opacity:.92;transition:opacity .2s}
+#nav .brand:hover{opacity:1}
+#nav .brand em{font-style:italic;color:var(--aqua)}
+#nav .links{display:flex;gap:clamp(.15rem,1.4vw,.5rem);margin-left:auto;overflow-x:auto;
+  scrollbar-width:none;-ms-overflow-style:none}
+#nav .links::-webkit-scrollbar{display:none}
+#nav a.lnk{position:relative;font-family:'Karla',system-ui,sans-serif;font-weight:300;
+  font-size:clamp(.72rem,1.9vw,.83rem);letter-spacing:.04em;color:var(--mist);
+  text-decoration:none;padding:.4rem .58rem;border-radius:7px;white-space:nowrap;
+  transition:color .22s ease,background .22s ease}
+#nav a.lnk:hover,#nav a.lnk:focus-visible{color:var(--foam);background:rgba(168,213,205,.09)}
+#nav a.lnk::after{content:"";position:absolute;left:.58rem;right:.58rem;bottom:.16rem;height:1px;
+  background:var(--aqua);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s cubic-bezier(.4,0,.2,1)}
+#nav a.lnk.active{color:var(--foam)}
+#nav a.lnk.active::after{transform:scaleX(1)}
+#nav a.lnk:focus-visible{outline:2px solid var(--aqua);outline-offset:1px}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--deep);color:var(--foam);
+  padding:.7rem 1.1rem;border-radius:0 0 8px 0;font-family:'Karla',sans-serif;font-size:.85rem}
+.skip:focus{left:0}
+@media (max-width:430px){#nav .brand{font-size:.85rem}#nav{gap:.4rem}}
 </style>
 </head>
 <body>
+<span id="top"></span>
+<a class="skip" href="#places">Skip to content</a>
+<nav id="nav" aria-label="Sections">
+  <a class="brand" href="#top">Field <em>Notes</em></a>
+  <div class="links">
+    <a class="lnk" href="#places">Places</a>
+    <a class="lnk" href="#residents">Residents</a>
+    <a class="lnk" href="#aquarium">Aquarium</a>
+    <a class="lnk" href="#eclipse">Eclipse</a>
+  </div>
+</nav>
+
 
 <canvas id="water" aria-hidden="true"></canvas>
 <div class="shimmer" aria-hidden="true"></div>
@@ -290,7 +354,7 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
 <div class="page">
 
 <header class="hero">
-  <img class="hero-img" src="hero-01.jpg" alt="Sunset over the water at the Tampa Riverwalk, mangroves along the bank">
+  <img fetchpriority="high" decoding="async" class="hero-img" src="hero-01.jpg" alt="Sunset over the water at the Tampa Riverwalk, mangroves along the bank">
   <div class="cue" aria-hidden="true"></div>
   <div class="hero-in wrap">
     <p class="eyebrow">Nicolas Graham · Field Notes</p>
@@ -369,8 +433,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of three sandhill cranes">
-          <img class="glow" src="plate-01.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="plate-01.jpg" alt="Three sandhill cranes walking along the sandy shore of a pond">
+          <img loading="lazy" decoding="async" class="glow" src="plate-01.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="plate-01.jpg" alt="Three sandhill cranes walking along the sandy shore of a pond">
         </button>
       </div>
       <div class="plate-body">
@@ -386,8 +450,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of a pied Muscovy duck">
-          <img class="glow" src="plate-02.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="plate-02.jpg" alt="A pied Muscovy duck sitting in green grass, red caruncles around its face">
+          <img loading="lazy" decoding="async" class="glow" src="plate-02.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="plate-02.jpg" alt="A pied Muscovy duck sitting in green grass, red caruncles around its face">
         </button>
       </div>
       <div class="plate-body">
@@ -402,8 +466,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of a white Muscovy duck">
-          <img class="glow" src="plate-03.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="plate-03.jpg" alt="A white Muscovy duck resting on a grassy curb strip beside pavement">
+          <img loading="lazy" decoding="async" class="glow" src="plate-03.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="plate-03.jpg" alt="A white Muscovy duck resting on a grassy curb strip beside pavement">
         </button>
       </div>
       <div class="plate-body">
@@ -418,8 +482,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of an eastern gray squirrel">
-          <img class="glow" src="plate-04.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="plate-04.jpg" alt="An eastern gray squirrel sitting upright in grass, holding food in its paws">
+          <img loading="lazy" decoding="async" class="glow" src="plate-04.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="plate-04.jpg" alt="An eastern gray squirrel sitting upright in grass, holding food in its paws">
         </button>
       </div>
       <div class="plate-body">
@@ -434,8 +498,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of a pond with a heron and a turtle">
-          <img class="glow" src="plate-05.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="plate-05.jpg" alt="A pond with a wading bird in the reeds and a turtle on the bare ground in front">
+          <img loading="lazy" decoding="async" class="glow" src="plate-05.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="plate-05.jpg" alt="A pond with a wading bird in the reeds and a turtle on the bare ground in front">
         </button>
       </div>
       <div class="plate-body">
@@ -452,8 +516,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of a wasp on frogfruit">
-          <img class="glow" src="plate-06.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="plate-06.jpg" alt="A slender wasp perched on a small flowering plant against a soft gray background">
+          <img loading="lazy" decoding="async" class="glow" src="plate-06.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="plate-06.jpg" alt="A slender wasp perched on a small flowering plant against a soft gray background">
         </button>
       </div>
       <div class="plate-body">
@@ -493,8 +557,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry" style="margin-top:clamp(40px,8vh,90px)">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of a shark">
-          <img class="glow" src="aq-shark.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-shark.jpg" alt="A large shark gliding above a rocky reef in green-lit water">
+          <img loading="lazy" decoding="async" class="glow" src="aq-shark.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-shark.jpg" alt="A large shark gliding above a rocky reef in green-lit water">
         </button>
       </div>
       <div class="plate-body">
@@ -510,8 +574,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of a reef tank with schooling fish and a sea turtle">
-          <img class="glow" src="aq-reef.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-reef.jpg" alt="A large reef tank full of schooling silver fish with a sea turtle resting among them">
+          <img loading="lazy" decoding="async" class="glow" src="aq-reef.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-reef.jpg" alt="A large reef tank full of schooling silver fish with a sea turtle resting among them">
         </button>
       </div>
       <div class="plate-body">
@@ -527,8 +591,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand wide photo of the whole reef tank showing fish at every depth">
-          <img class="glow" src="aq-reef2.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-reef2.jpg" alt="A wide view of a large reef tank: big fish cruising the open middle water, dense schools packed low against the rocks, and a shark passing along the right">
+          <img loading="lazy" decoding="async" class="glow" src="aq-reef2.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-reef2.jpg" alt="A wide view of a large reef tank: big fish cruising the open middle water, dense schools packed low against the rocks, and a shark passing along the right">
         </button>
       </div>
       <div class="plate-body">
@@ -544,8 +608,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of spotted jellyfish">
-          <img class="glow" src="aq-jelly.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-jelly.jpg" alt="Several white-spotted jellyfish glowing blue against a dark tank">
+          <img loading="lazy" decoding="async" class="glow" src="aq-jelly.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-jelly.jpg" alt="Several white-spotted jellyfish glowing blue against a dark tank">
         </button>
       </div>
       <div class="plate-body">
@@ -561,8 +625,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of a glowing sea anemone">
-          <img class="glow" src="aq-anemone.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-anemone.jpg" alt="A sea anemone glowing blue-white under ultraviolet light, tentacles curled inward">
+          <img loading="lazy" decoding="async" class="glow" src="aq-anemone.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-anemone.jpg" alt="A sea anemone glowing blue-white under ultraviolet light, tentacles curled inward">
         </button>
       </div>
       <div class="plate-body">
@@ -578,8 +642,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of a rock wall covered in anemones and sea stars under violet light">
-          <img class="glow" src="aq-tubeanemone.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-tubeanemone.jpg" alt="A rock face crowded with pink and white anemones and a tall orange column anemone, with sea stars on the upper right, all under deep violet light">
+          <img loading="lazy" decoding="async" class="glow" src="aq-tubeanemone.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-tubeanemone.jpg" alt="A rock face crowded with pink and white anemones and a tall orange column anemone, with sea stars on the upper right, all under deep violet light">
         </button>
       </div>
       <div class="plate-body">
@@ -595,8 +659,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of a touch pool with anemones and sea stars">
-          <img class="glow" src="aq-touchpool.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-touchpool.jpg" alt="A shallow pool of anemones and sea stars glowing pink, purple and green under coloured light">
+          <img loading="lazy" decoding="async" class="glow" src="aq-touchpool.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-touchpool.jpg" alt="A shallow pool of anemones and sea stars glowing pink, purple and green under coloured light">
         </button>
       </div>
       <div class="plate-body">
@@ -611,8 +675,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of a juvenile alligator">
-          <img class="glow" src="aq-gator.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-gator.jpg" alt="A juvenile American alligator resting on mossy stones behind glass">
+          <img loading="lazy" decoding="async" class="glow" src="aq-gator.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-gator.jpg" alt="A juvenile American alligator resting on mossy stones behind glass">
         </button>
       </div>
       <div class="plate-body">
@@ -628,8 +692,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate landscape reveal" type="button" aria-label="Expand photo of a large fish near the surface">
-          <img class="glow" src="aq-bigfish.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="aq-bigfish.jpg" alt="A large silver fish with big scales resting just under the surface of a shallow tank">
+          <img loading="lazy" decoding="async" class="glow" src="aq-bigfish.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="aq-bigfish.jpg" alt="A large silver fish with big scales resting just under the surface of a shallow tank">
         </button>
       </div>
       <div class="plate-body">
@@ -659,8 +723,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry" style="margin-top:clamp(40px,8vh,90px)">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of the partially eclipsed moon">
-          <img class="glow" src="ec-partial.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="ec-partial.jpg" alt="The moon with craters clearly visible, its lower left edge softened where Earth's shadow has begun to cross it">
+          <img loading="lazy" decoding="async" class="glow" src="ec-partial.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="ec-partial.jpg" alt="The moon with craters clearly visible, its lower left edge softened where Earth's shadow has begun to cross it">
         </button>
       </div>
       <div class="plate-body">
@@ -675,8 +739,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of the moon further into eclipse">
-          <img class="glow" src="ec-shadow.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="ec-shadow.jpg" alt="The moon smaller in the frame, more of its surface now dark, a bright crescent remaining at the top">
+          <img loading="lazy" decoding="async" class="glow" src="ec-shadow.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="ec-shadow.jpg" alt="The moon smaller in the frame, more of its surface now dark, a bright crescent remaining at the top">
         </button>
       </div>
       <div class="plate-body">
@@ -690,8 +754,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand photo of the moon near maximum eclipse">
-          <img class="glow" src="ec-deep.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="ec-deep.jpg" alt="A thin brilliant crescent at the top of the moon, the rest of the disc a faint glowing dome below it">
+          <img loading="lazy" decoding="async" class="glow" src="ec-deep.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="ec-deep.jpg" alt="A thin brilliant crescent at the top of the moon, the rest of the disc a faint glowing dome below it">
         </button>
       </div>
       <div class="plate-body">
@@ -706,8 +770,8 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     <article class="entry">
       <div class="stage">
         <button class="plate portrait reveal" type="button" aria-label="Expand a double-exposed photo of the eclipsed moon">
-          <img class="glow" src="ec-double.jpg" alt="" aria-hidden="true">
-          <img class="photo" src="ec-double.jpg" alt="Two overlapping bright crescents against black, the result of camera movement during a long exposure">
+          <img loading="lazy" decoding="async" class="glow" src="ec-double.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" decoding="async" class="photo" src="ec-double.jpg" alt="Two overlapping bright crescents against black, the result of camera movement during a long exposure">
         </button>
       </div>
       <div class="plate-body">
@@ -738,7 +802,7 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button id="lb-close" type="button">close ✕</button>
-  <img alt="">
+  <img loading="lazy" decoding="async" alt="">
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -943,6 +1007,42 @@ footer .sign{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--aqua);fon
     if(document.hidden && !a.paused) ramp(0,function(){a.pause();b.classList.remove('on');
       b.setAttribute('aria-pressed','false');b.querySelector('.lbl').textContent='Sound';});
   });
+})();
+
+/* ---- nav: reveal past hero + active-section highlight ---- */
+(function(){
+  var nav=document.getElementById('nav');
+  if(!nav) return;
+  var hero=document.querySelector('.hero');
+  var links=[].slice.call(nav.querySelectorAll('a.lnk'));
+  var map={};
+  links.forEach(function(a){
+    var id=a.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el) map[id]=a;
+  });
+
+  /* show the bar once the hero has scrolled away */
+  if(hero&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      nav.classList.toggle('show',!es[0].isIntersecting);
+    },{rootMargin:'-60px 0px 0px 0px'}).observe(hero);
+  }else{
+    nav.classList.add('show');
+  }
+
+  /* highlight whichever section owns the upper third of the screen */
+  if('IntersectionObserver' in window){
+    var seen={};
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ seen[e.target.id]=e.isIntersecting?e.intersectionRatio:0; });
+      var best=null,bv=0;
+      Object.keys(seen).forEach(function(k){ if(seen[k]>bv){bv=seen[k];best=k;} });
+      links.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+      if(best&&map[best]){ map[best].classList.add('active'); map[best].setAttribute('aria-current','true'); }
+    },{rootMargin:'-70px 0px -55% 0px',threshold:[0,.15,.4,.75,1]});
+    Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+  }
 })();
 </script>
 </body>
